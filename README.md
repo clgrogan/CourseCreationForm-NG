@@ -1,4 +1,4 @@
-# Angular Course Creation Form
+# Angular Course Creation Form Exercise
 
 Angular project that will use Template-driven forms to emulate the entry of information for a new course on Udemy by an instructor.
 
