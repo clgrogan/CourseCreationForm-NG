@@ -12,4 +12,7 @@ export class AddCourseComponent {
     this.categories = service.getCategories();
     console.log(this.categories);
   }
+  submit = (addCourseForm) => {
+    console.log(addCourseForm);
+  };
 }
