@@ -1,1 +1,54 @@
-<p>add-course works!</p>
+<header>
+  <h1>Angular Course Creation Form</h1>
+</header>
+<main>
+  <form #addClassForm="ngForm">
+    <!-- We will need to import the FormsModule into the app.module.ts file -->
+    <!-- Otherwise an error will occur '...No directive found with exportAs 'ngForm'.' -->
+    <section class="form-group">
+      <label for="courseTitle">Course Title</label>
+      <input
+        ngModel
+        #courseTitle="ngModel"
+        id="courseTitle"
+        name="courseTitle"
+        type="text"
+        class="form-control"
+        required
+        minlength="5"
+      />
+      <section class="alert alert-danger" *ngIf="!courseTitle.valid">
+        <div *ngIf="courseTitle.errors.required">
+          The 'Course Title' is required.
+        </div>
+        <div *ngIf="courseTitle.errors.minlength">
+          The 'Course Title' minimum length is 5 characters.
+        </div>
+      </section>
+    </section>
+    <section class="form-group">
+      <label for="category">Category</label
+      ><select
+        ngModel
+        name="category"
+        required
+        #category="ngModel"
+        id="category"
+        class="form-control"
+      >
+        <option value="" disabled selected>--select an option--</option>
+        <option *ngFor="let category of categories" [value]="category.id">
+          {{ category.name }}</option
+        >
+      </select>
+    </section>
+    <section class="alert alert-danger" *ngIf="!category.valid">
+      <div *ngIf="category.errors.required">
+        The 'Category' is required.
+      </div>
+    </section>
+  </form>
+  <p class="alert alert-danger">
+    {{ addClassForm.value | json }}
+  </p>
+</main>
